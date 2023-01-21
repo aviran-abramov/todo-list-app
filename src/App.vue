@@ -1,7 +1,7 @@
 <template>
   <TodoHeader />
   <main>
-    <NewTask />
+    <NewTask @submit-task="addTask" />
   </main>
 </template>
 
@@ -13,6 +13,19 @@ export default {
   components: {
     TodoHeader,
     NewTask,
+  },
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  methods: {
+    addTask(task) {
+      this.tasks.unshift({
+        id: this.tasks.length,
+        text: task,
+      });
+    },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="add-task-container container">
     <h3>New Task</h3>
-    <form @submit.prevent="addTask">
+    <form @submit.prevent="submitTask">
       <input v-model="enteredNewTask" type="text" />
       <button>+</button>
     </form>
@@ -10,13 +10,15 @@
 
 <script>
 export default {
+  emits: ["submit-task"],
   data() {
     return {
       enteredNewTask: "",
     };
   },
   methods: {
-    addTask() {
+    submitTask() {
+      this.$emit("submit-task", this.enteredNewTask);
       this.enteredNewTask = "";
     },
   },
