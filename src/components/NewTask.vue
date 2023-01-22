@@ -18,7 +18,12 @@ export default {
   },
   methods: {
     submitTask() {
-      this.$emit("submit-task", this.enteredNewTask);
+      const firstCapitalizedLetter = this.enteredNewTask
+        .charAt(0)
+        .toUpperCase();
+      const restOfTheTask = this.enteredNewTask.split("").slice(1).join("");
+      const finalTask = firstCapitalizedLetter + restOfTheTask;
+      this.$emit("submit-task", finalTask);
       this.enteredNewTask = "";
     },
   },
