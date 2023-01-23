@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tasks.length > 0" class="container">
+  <tasks-container v-if="tasks.length > 0">
     <h2>To-do List</h2>
     <ul>
       <li v-for="task in tasks" :key="task.id">
@@ -12,7 +12,7 @@
         </div>
       </li>
     </ul>
-  </div>
+  </tasks-container>
 </template>
 
 <script>
@@ -36,18 +36,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 13px;
-  border-radius: 6px;
-  max-width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 h2 {
   font-weight: bold;
   font-size: 1.8rem;

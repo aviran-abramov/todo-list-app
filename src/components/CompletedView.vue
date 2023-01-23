@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <tasks-container>
     <h2>Completed Tasks</h2>
     <p v-if="completedTasks.length === 0" class="gray-p">Nothing to show yet</p>
     <ul v-else>
@@ -7,7 +7,7 @@
         <p>{{ task.text }}</p>
       </li>
     </ul>
-  </div>
+  </tasks-container>
 </template>
 
 <script>
