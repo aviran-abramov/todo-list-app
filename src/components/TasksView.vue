@@ -5,7 +5,9 @@
       <li v-for="task in tasks" :key="task.id">
         <p>{{ task.text }}</p>
         <div class="buttons">
-          <button class="finish">V</button>
+          <button @click="submitCompletedTask(task.id)" class="finish">
+            V
+          </button>
           <button @click="submitTaskRemoval(task.id)" class="remove">X</button>
         </div>
       </li>
@@ -15,7 +17,7 @@
 
 <script>
 export default {
-  emits: ["submit-task-removal"],
+  emits: ["submit-task-removal", "submit-completed-task"],
   props: {
     tasks: {
       type: Array,
@@ -23,6 +25,9 @@ export default {
     },
   },
   methods: {
+    submitCompletedTask(taskId) {
+      this.$emit("submit-completed-task", taskId);
+    },
     submitTaskRemoval(taskId) {
       this.$emit("submit-task-removal", taskId);
     },
