@@ -27,23 +27,23 @@ export default {
   data() {
     return {
       tasks: [],
+      tasksAmount: 0,
       completedTasks: [],
     };
   },
   methods: {
     addTask(task) {
       this.tasks.unshift({
-        id: this.tasks.length,
+        id: this.tasksAmount,
         text: task,
-        completed: false,
       });
+      this.tasksAmount++;
     },
     completeTask(taskId) {
       const selectedTask = this.tasks.find((task) => task.id === taskId);
       this.completedTasks.push({
         id: selectedTask.id,
         text: selectedTask.text,
-        completed: true,
       });
       this.tasks = this.tasks.filter((task) => taskId !== task.id);
     },
